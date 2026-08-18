@@ -118,6 +118,6 @@ If you'd rather not donate, ⭐ starring the repository, sharing the project, or
 Found a bug, have a feature request, or want to get in touch?
 
 - GitHub: Open an issue or discussion in this repository.
-- Security issues: Please report security-sensitive issues privately rather than posting them publicly on bugatsec@gmail.com
+- Security issues: Please report security-sensitive issues privately on bugatsec@gmail.com rather than posting them publicly.
 
 For feature requests and general feedback, feel free to open a GitHub issue.
