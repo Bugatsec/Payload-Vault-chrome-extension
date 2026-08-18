@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Payload Vault — XSS & Pentest Snippets",
+  "version": "1.1.0",
+  "description": "Quick-copy library of your most-used XSS payloads, polyglots, and test snippets for authorized security testing.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage"],
+  "commands": {
+    "quick_view": {
+      "suggested_key": {
+        "default": "Alt+Shift+F",
+        "mac": "Alt+Shift+F"
+      },
+      "description": "Open Payload Vault (quick view — configurable in Settings)"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

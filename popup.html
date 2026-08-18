@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Payload Vault</title>
+<link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <div class="title">
+      <img src="icons/icon32.png" alt="" />
+      <h1>Payload Vault</h1>
+    </div>
+    <div class="header-actions">
+      <button id="foldersBtn" class="icon-btn" title="Folders" aria-label="Folders">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      </button>
+      <button id="orphansBtn" class="icon-btn" title="Orphans (untagged)" aria-label="Orphans">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.6a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
+      </button>
+      <button id="addBtn" title="Add new payload">+ Add</button>
+    </div>
+  </header>
+
+  <div id="breadcrumb" class="breadcrumb" hidden>
+    <button id="backBtn" class="back-btn">&larr; Back</button>
+    <span id="breadcrumbLabel"></span>
+    <button id="recentShortcutBtn" class="link-btn" title="Recently viewed">Recent</button>
+  </div>
+
+  <input id="search" type="text" placeholder="Search payloads or tags..." />
+
+  <div id="addFolderRow" class="add-folder-row" hidden>
+    <button id="addFolderBtn" class="secondary small">+ Add Folder</button>
+  </div>
+
+  <div id="list" class="list"></div>
+
+  <div id="emptyState" class="empty-state" hidden></div>
+
+  <!-- Add / Edit payload form -->
+  <div id="formOverlay" class="overlay" hidden>
+    <div class="form-card">
+      <h2 id="formTitle">Add Payload</h2>
+      <label>Label
+        <input id="formLabel" type="text" placeholder="e.g. Cookie-stealing img tag" />
+      </label>
+      <label>Tags
+        <div id="tagInputBox" class="tag-input-box">
+          <div id="tagChips" class="tag-chips"></div>
+          <input id="tagInput" type="text" placeholder="Type a tag, press Enter..." autocomplete="off" />
+          <div id="tagSuggestions" class="tag-suggestions" hidden></div>
+        </div>
+      </label>
+      <label>Payload
+        <textarea id="formValue" rows="5" placeholder="Paste your payload here..."></textarea>
+      </label>
+      <div class="form-actions">
+        <button id="formCancel" class="secondary">Cancel</button>
+        <button id="formSave">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add / rename folder name prompt -->
+  <div id="folderPromptOverlay" class="overlay" hidden>
+    <div class="form-card small-card">
+      <h2 id="folderPromptTitle">New Folder</h2>
+      <label>Folder name
+        <input id="folderNameInput" type="text" placeholder="e.g. sqli" autocomplete="off" />
+      </label>
+      <div class="form-actions">
+        <button id="folderPromptCancel" class="secondary">Cancel</button>
+        <button id="folderPromptSave">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Generic confirm dialog (used for folder delete) -->
+  <div id="confirmOverlay" class="overlay" hidden>
+    <div class="form-card small-card">
+      <h2 id="confirmTitle">Are you sure?</h2>
+      <p id="confirmMessage" class="settings-note"></p>
+      <div class="form-actions">
+        <button id="confirmCancel" class="secondary">Cancel</button>
+        <button id="confirmOk" class="danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings panel -->
+  <div id="settingsOverlay" class="overlay" hidden>
+    <div class="form-card">
+      <h2>Settings</h2>
+      <label>Alt+Shift+F opens
+        <select id="shortcutTargetSelect">
+          <option value="recent">Recent</option>
+          <option value="folders">Folders</option>
+          <option value="orphans">Orphans</option>
+          <option value="all">All Payloads</option>
+        </select>
+      </label>
+      <p class="settings-note">
+        The key combo itself (Alt+Shift+F) can only be changed by Chrome's own
+        shortcuts page, not from inside the extension.
+      </p>
+      <button id="openShortcutsPageBtn" class="secondary small">Change key combo in Chrome →</button>
+      <div class="form-actions">
+        <button id="settingsClose">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span id="toast" class="toast" hidden>Copied!</span>
+    <span class="hint">click a card to copy</span>
+    <button id="settingsBtn" class="icon-btn small-icon" title="Settings" aria-label="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
