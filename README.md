@@ -33,37 +33,30 @@ anywhere over the network.
 
 ## Features
 
-- **📋 One-click copy**: click any payload card, it's on your clipboard.
-- **🏷️ Tag-based organization**: tag payloads (`xss`, `openredirect`, `ssrf`,
+- **One-click copy**: click any payload card, it's on your clipboard.
+- **Tag-based organization**: tag payloads (`xss`, `openredirect`, `ssrf`,
   whatever you use) instead of filing them into one rigid folder. A payload
   can belong to as many tags as make sense.
-- **⌨️ Tag autocomplete**: start typing a tag and matching existing tags
-  suggest instantly, so you're not retyping `openredirect` slightly
-  differently every time and fragmenting your library.
-- **🔍 Fuzzy tag search**: search ignores spacing/casing, so `open redirect`
+- **Fuzzy tag search**: search ignores spacing/casing, so `open redirect`
   finds payloads tagged `openredirect`.
-- **📁 Folders view**: every tag doubles as a browsable folder. A payload
+- **Folders view**: every tag doubles as a browsable folder. A payload
   tagged `xss` + `openredirect` shows up in both: no duplication, no
   manual filing.
-- **🚫 Orphans view**: instantly see which payloads you forgot to tag.
-- **➕ Pre-create empty folders**: set up your taxonomy (`sqli`, `ssti`,
+- **Orphans view**: instantly see which payloads you forgot to tag.
+- **Pre-create empty folders**: set up your taxonomy (`sqli`, `ssti`,
   `idor`...) before you've added a single payload to them.
-- **✎ Rename / 🗑 delete folders**: rename updates the tag across every
-  payload that uses it (merges automatically if the new name already
-  exists); delete just strips the tag off affected payloads: your
-  payloads are never deleted along with a folder.
-- **⠿ Drag-to-reorder**: grab the six-dot handle on any payload or folder
+- **Drag-to-reorder**: grab the six-dot handle on any payload or folder
   to pin your most-used ones to the top. Order inside a folder is
   independent from the main list and other folders.
-- **⏱️ Recent view**: `Alt+Shift+F` jumps straight to the folders/Orphans
+- **Recent view**: `Alt+Shift+F` jumps straight to the folders/Orphans
   you looked at most recently.
-- **⚙️ Configurable shortcut target**: decide whether `Alt+Shift+F` opens
+- **Configurable shortcut target**: decide whether `Alt+Shift+F` opens
   Recent, Folders, Orphans, or the full list; jump straight to Chrome's
   own shortcut page if you want to remap the key combo itself.
-- **🌱 Seeded with reference payloads**: ships with a handful of standard,
+- **Seeded with reference payloads**: ships with a handful of standard,
   publicly documented OWASP-style XSS payloads so it's useful on install,
   not an empty box.
-- **🔒 100% local**: everything lives in `chrome.storage.local`. No
+- **100% local**: everything lives in `chrome.storage.local`. No
   accounts, no sync servers, no analytics, no network calls at all.
 
 ## How to use it
@@ -105,14 +98,21 @@ All are standard, publicly documented reference strings: for use only in
 authorized testing (your own apps, CTFs, or bug bounty programs where you
 have explicit permission).
 
-## Privacy & footprint
-- No network requests, no telemetry, no external libraries.
-- No frameworks or build step: plain HTML/CSS/JS only.
-- The popup fully unloads when closed; the background service worker is
-  purely event-driven and Chrome sleeps it when idle. It will not sit there
-  eating RAM.
+## License
+Payload Vault is released under the MIT License.
+You are free to use, modify, and distribute the software in accordance with the terms of the license.
+See the [LICENSE](LICENCE) file for the complete license text.
 
-## Data migration
-Older versions stored a single `category` string per payload. On first load
-after updating, this is automatically converted into the new `tags[]`
-format: nothing is lost, no action needed.
+## Support the Project ☕
+If Payload Vault saves you time during your security research and you find it useful, you can support its development and maintenance:
+🇮🇳 [Buy Bugatsec a Chai](https://www.buymeachai.in/Bugatsec)
+Your support helps with continued development, maintenance, and improvements to Payload Vault.
+If you'd rather not donate, ⭐ starring the repository, sharing the project, or reporting bugs is always appreciated.
+
+## Contact
+Found a bug, have a feature request, or want to get in touch?
+
+GitHub: Open an issue or discussion in this repository.
+Security issues: Please report security-sensitive issues privately rather than posting them publicly on bugatsec@gmail.com
+
+For feature requests and general feedback, feel free to open a GitHub issue.
