@@ -15,6 +15,10 @@
 
 ---
 
+<p align="center">
+  <img src="/icons/icon128.png" width="148" alt="Payload Vault" />
+</p>
+
 ## Why this exists
 
 Every pentest / bug bounty session hits the same friction: you know the
