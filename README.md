@@ -109,6 +109,7 @@ See the [LICENSE](LICENCE) file for the complete license text.
 
 ## Support the Project ☕
 If Payload Vault saves you time during your security research and you find it useful, you can support its development and maintenance:
+
 🇮🇳 [Buy Bugatsec a Chai](https://www.buymeachai.in/Bugatsec)
 Your support helps with continued development, maintenance, and improvements to Payload Vault.
 If you'd rather not donate, ⭐ starring the repository, sharing the project, or reporting bugs is always appreciated.
@@ -116,7 +117,7 @@ If you'd rather not donate, ⭐ starring the repository, sharing the project, or
 ## Contact
 Found a bug, have a feature request, or want to get in touch?
 
-GitHub: Open an issue or discussion in this repository.
-Security issues: Please report security-sensitive issues privately rather than posting them publicly on bugatsec@gmail.com
+- GitHub: Open an issue or discussion in this repository.
+- Security issues: Please report security-sensitive issues privately rather than posting them publicly on bugatsec@gmail.com
 
 For feature requests and general feedback, feel free to open a GitHub issue.
